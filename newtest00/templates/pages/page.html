@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load staticfiles mezzanine_tags keyword_tags %}
+
+<!-- this is for <head/> <title/> -->
+{% block meta_title %}{{ page.meta_title }}{% endblock %}
+
+<!-- this is for <head/> <meta name="keywords"/>  -->
+{% block meta_keywords %}
+	{% metablock %}
+		{% keywords_for page as keywords %}
+			{% for keyword in keywords %}
+			    {% if not forloop.first %}, {% endif %}
+			    {{ keyword }}
+			{% endfor %}
+	{% endmetablock %}
+{% endblock %}
+
+<!-- this is for <head/> <meta name="description"/> -->
+{% block meta_description %}
+	{% metablock %}
+		{{ page.description }}
+	{% endmetablock %}
+{% endblock %}
+
+<!--  <h1 block title /> -->
+{% block title %}
+		<header class="all-header" style="background-image: url({%  static 'img/hexellence.png' %})">
+			<div class="container">
+				<h1>{% editable page.title %}{{ page.title }}{% endeditable %}</h1>
+				<p>{{ page.description }}</p>
+			</div>
+		</header>
+{% endblock %}
+
+{% block main %}
+{% endblock %}

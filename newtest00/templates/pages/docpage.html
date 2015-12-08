@@ -1,0 +1,31 @@
+{% extends "pages/page.html" %}
+
+{% load pages_tags mezzanine_tags comment_tags i18n %}
+
+{% block main %}{{ block.super }}
+<div class="span2 pull-right">
+    {% if page.docpage.allow_comments %}
+        <a href="#comments">
+        	{% spaceless %}
+	            {% blocktrans count comments_count=page.docpage.comments_count %}
+	            	{{ comments_count }} comment{% plural %}{{ comments_count }} comments
+	            {% endblocktrans %}
+            {% endspaceless %}</a>
+    {% endif %}
+</div>
+
+{% editable page.docpage.content %}
+	{{ page.docpage.content|richtext_filters|safe }}
+{% endeditable %}
+
+
+{% if page.docpage.add_toc %}
+<hr/>
+	<div class="container">
+	    {% page_menu "pages/menus/footer_tree.html" page %}
+	</div>
+{% endif %}
+
+{% if page.docpage.allow_comments %}{% comments_for page.docpage %}{% endif %}
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "pages/page.html" %}
+{% load pages_tags mezzanine_tags comment_tags i18n %}
+
+{% block main %}{{ block.super }}
+	<!-- ############################################# -->
+	<!-- # will be temporary remove comments section # -->
+	<!-- # under comments will use disqus -->
+	<!-- ############################################# -->
+	<!-- <div class="span2 pull-right">
+	    {# if page.programming.allow_comments #}
+	        <a href="#comments">
+	        	spaceless if from django template tags
+	        	{# spaceless #}
+	        		 blocktrans is from django template tags
+		            {# blocktrans count comments_count=page.programming.comments_count #}
+		            	{# comments_count #} comment{# plural #}{# comments_count #} comments
+		            {# endblocktrans #}
+	            {# endspaceless #}
+	       	</a>
+	    {# endif #}
+	</div>  -->
+	<!-- ############################################ -->
+
+	<!-- this is for not showing the content of ascendant pages -->
+	{% if page.programming.allow_content %}
+		{% editable page.programming.content %}
+			{{ page.programming.content|richtext_filters|safe }}
+		{% endeditable %}
+	{% endif %}
+
+	<!-- this is to allow toc in list view? -->
+	{% if page.programming.add_toc %}
+		{% page_menu "pages/menus/footer_tree.html" page %}
+	{% endif %}
+
+	<!-- this is for showing comments -->
+	{% if page.programming.allow_comments %}
+		{% comments_for page.programming %}
+	{% endif %}
+{% endblock %}
+
+<!-- this is for assist toc or table of contents for main detail -->
+{% block right_panel %}
+{% if page.programming.allow_toc %}
+	{% include "pages/_allow_toc.html" %}
+{% endif %}
+{% endblock %}

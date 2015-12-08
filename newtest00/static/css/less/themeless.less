@@ -1,0 +1,68 @@
+@custom-header-font-color: rgb(0, 0, 0);
+@custom-header-font-weight: 600;
+@custom-header-display: block;
+@custom-header-font-size: 24px;
+@custom-header-margin-bottom: 30px;
+@custom-header-padding-bottom: 30px;
+@custom-header-padding-left: 15px;
+@custom-header-padding-right: 15px;
+@custom-header-paddint-top: 30px;
+@custom-header-position: relative;
+@custom-header-text-align: left;
+// @custom-header-h1-font-family: 'Montserrat', sans-serif;
+@custom-header-h1-font-size: 30px;
+// @custom-header-p-font-family: 'Open Sans', sans-serif;
+@custom-header-p-font-size: 15px;
+@custom-header-shadow-box-attrs: 0px 7px 14px 0px rgba(0,0,0,0.27);
+@custom-header-shadow-box-moz-attrs: 0px 7px 14px 0px rgba(0,0,0,0.27);
+@custom-header-shadow-box-webkit-attrs:0px 7px 14px 0px rgba(0,0,0,0.27);
+
+
+@custom-outer-panel-shadow-box-attrs: 0px 7px 14px 0px rgba(0,0,0,0.27);
+@custom-outer-panel-shadow-box-moz-attrs: 0px 7px 14px 0px rgba(0,0,0,0.27);
+@custom-outer-panel-shadow-box-webkit-attrs:0px 7px 14px 0px rgba(0,0,0,0.27);
+
+.custom-header{
+	display: @custom-header-display;
+	font-size: @custom-header-font-size;
+	line-height: 34.2857px;
+	margin-bottom: @custom-header-margin-bottom;
+	padding-bottom: @custom-header-padding-bottom;
+	padding-left: @custom-header-padding-left;
+	padding-right: @custom-header-padding-right;
+	padding-top: @custom-header-paddint-top;
+	position: @custom-header-position;
+	text-align: @custom-header-text-align;
+
+	.custom-header-shadow-box{
+		-webkit-box-shadow: @custom-header-shadow-box-webkit-attrs;
+	    -moz-box-shadow: @custom-header-shadow-box-moz-attrs;
+		box-shadow: @custom-header-shadow-box-attrs;
+	}
+
+	h1{
+		color: @custom-header-font-color;
+		// font-family: @custom-header-h1-font-family;
+		font-size: @custom-header-h1-font-size;
+		font-weight: @custom-header-font-weight;
+
+	}
+
+	p{
+		color: @custom-header-font-color;
+		// font-family: @custom-header-p-font-family;
+		font-size: @custom-header-p-font-size;
+		font-weight: @custom-header-font-weight;
+	}
+}
+
+.all-header{
+	.custom-header;
+	.custom-header-shadow-box;
+}
+
+.custom-outer-panel-shadow-box{
+	-webkit-box-shadow: @custom-outer-panel-shadow-box-attrs;
+	-moz-box-shadow: @custom-outer-panel-shadow-box-moz-attrs;
+	box-shadow: @custom-outer-panel-shadow-box-attrs;
+}

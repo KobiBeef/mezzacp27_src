@@ -1,0 +1,20 @@
+{% load staticfiles i18n future pages_tags %}
+{% spaceless %}
+	{% if page_branch_in_menu %}
+		{% for page in page_branch %}
+			<div class="panel panel-default custom-outer-panel-shadow-box">
+			<div class="panel-heading" style="background-image: url({% static 'img/hexellence.png'%});">
+				<h4><a href="{{ page.get_absolute_url }}">{{ page.programming.title }}</a> : <small>{{ page.programming.tutorial_url }}</small></h4>
+			</div>
+			<div class="panel-body">
+				{% if page.has_children_in_menu %}
+					<!-- thos shows the description and url -->
+					{% page_menu page "pages/menus/tree.html" %}
+				{% else %}
+					{{ page.description }}
+				{% endif %}
+			</div>
+			</div>
+		{% endfor %}
+	{% endif %}
+{% endspaceless %}

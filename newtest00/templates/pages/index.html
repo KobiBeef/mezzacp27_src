@@ -1,0 +1,48 @@
+{% extends "pages/richtextpage.html" %}
+{% load programming_tags i18n staticfiles %}
+
+{% block meta_title %}{% trans "Landing Page" %}{% endblock %}
+{% block title %}
+	<header class="all-header" style="background-image: url({%  static 'img/gplay.png' %})">
+		<div class="container">
+			<h1>{% trans "Landing Page" %}</h1>
+			<p>{{ page.description }}</p>
+		</div>
+	</header>
+{% endblock %}
+
+{% block breadcrumb_menu %}
+<li class="active">{% trans "Landing Page" %}</li>
+{% endblock %}
+
+{% block main %}
+<!-- blocktrans is a django template_tag -->
+{# blocktrans #}
+<h2>WELCOME!</h2>
+<p>
+    Welcome to your new Mezzanine powered website.
+    Here are some quick links to get you started:
+    IM HERE newtest00!!!
+</p>
+{{ page.author.title }}<br/>
+{% for object in page.author.book_set.all %}
+    {{ object.test_data }}<br />
+{% endfor %}
+<ul>
+    <li><a href="#"></a>OVERVIEW HERE</li>
+</ul>
+{# endblocktrans #}
+
+<div class="col-md-6">
+	test for recent articles
+	{% programming_recent_post 5 as testarticles %}
+	{% if testarticles %}
+		{% for object in testarticles %}
+			<p>{{ object.title }}</p>{{ object.publish_date }}
+		{% endfor %}
+	{% endif %}
+</div>
+<div class="col-md-6">
+	test for recent blog post
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "pages/page.html" %}
+{% load pages_tags mezzanine_tags comment_tags i18n %}
+
+{% block main %}
+<div class="container">
+    {% page_menu "pages/menus/footer_tree.html" page %}
+</div>
+{% endblock %}
+
+
+<!-- /docpage(Page, RichText).html
+	/Django(Page, RichText)
+		/Django topic1(Page, RichText)
+	/Mezzanine(Page, RichText)
+		/Mezzanine part1
+		/Mezzanine part2
+	/Linux(Page, RichText)
+		/
+	/Legacy(Page, RichText)
+		/
+	/Random(Page, RichText)
+		/
+ -->
